@@ -1,6 +1,8 @@
 # Dockerfile for deploying AI Supplier Bot with Streamlit and Selenium on Render
 
 
+# Dockerfile for deploying AI Supplier Bot with Streamlit and Selenium on Render
+
 FROM python:3.10-slim
 
 # Install Chrome and dependencies
@@ -18,10 +20,9 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
     && apt-get install -y ./google-chrome-stable_current_amd64.deb || apt-get install -f -y \
     && rm google-chrome-stable_current_amd64.deb
 
-# Install ChromeDriver (matching version)
-RUN CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d'.' -f1) \
-    && DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}") \
-    && wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip" \
+# Install ChromeDriver (manually specify version to avoid dynamic errors)
+ENV CHROMEDRIVER_VERSION=114.0.5735.90
+RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/ \
     && chmod +x /usr/local/bin/chromedriver
 
