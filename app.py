@@ -37,7 +37,7 @@ st.write("Instantly gather product details from ASDA to find new insights. Click
 
 category = st.selectbox("Select product category:", ["wheat", "rice", "sugar", "pulses"])
 if st.button("Search Products"):
-    with st.spinner("Fetching product data from ASDA..."):
+    with st.spinner("Fetching product from ASDA..."):
         time.sleep(10)
         selected_files = [file for file in SCRAPED_FILES if category in file]
         all_data = []
