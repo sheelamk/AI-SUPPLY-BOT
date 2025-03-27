@@ -1,5 +1,6 @@
 # Dockerfile for deploying AI Supplier Bot with Streamlit and Selenium on Render
 
+
 FROM python:3.10-slim
 
 # Install Chrome and dependencies
@@ -11,9 +12,10 @@ RUN apt-get update && apt-get install -y \
     libxdamage1 libxrandr2 xdg-utils libu2f-udev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Chrome
+# Install Chrome with dependency fix
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && apt install -y ./google-chrome-stable_current_amd64.deb \
+    && apt-get update \
+    && apt-get install -y ./google-chrome-stable_current_amd64.deb || apt-get install -f -y \
     && rm google-chrome-stable_current_amd64.deb
 
 # Install ChromeDriver (matching version)
