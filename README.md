@@ -12,3 +12,16 @@ scraping product data from major supermarkets, and sending personalized emails f
 -  **Supplier Directory**: Upload and manage a verified supplier database with downloadable filtering.
 -  ** Built-in validation, duplicate removal, and robust interface.
 
+ Powered By
+Streamlit – interactive UI
+Selenium – automated scraping
+Email Validator – validates emails
+Pandas – data handling
+WebDriver Manager – manages ChromeDriver
+
+Future Enhancements
+Integrate Apollo real-time API (instead of simulated)
+Add contact tagging & segment-based targeting
+Enable attachment of product brochures in emails
+Add charts for product analysis
+
